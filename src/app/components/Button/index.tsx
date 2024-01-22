@@ -10,8 +10,11 @@ export type ButtonProps = {
   as?: React.ElementType;
 } & ButtonTypes;
 
-const Button = ({ children, icon, ...props }: ButtonProps) => (
-  <S.Wrapper hasIcon={!!icon} {...props}>
+const Button: React.ForwardRefRenderFunction<S.WrapperProps, ButtonProps> = (
+  { children, icon, ...props },
+  ref
+) => (
+  <S.Wrapper hasIcon={!!icon} ref={ref} {...props}>
     {icon}
     {!!children && <span>{children}</span>}
   </S.Wrapper>

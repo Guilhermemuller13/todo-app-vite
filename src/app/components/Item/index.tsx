@@ -8,42 +8,48 @@ import * as S from "./styles";
 
 export type ItemProps = {
   text: string;
-  checked: boolean;
+  isChecked: boolean;
   id: string;
-  onChangeStatus: (id: string) => void;
-  onChangeLevel: (id: string) => void;
+  isImportant: boolean;
+  onChangeStatusCompleted: (id: string) => void;
+  onChangeLevelImportant: (id: string) => void;
 };
 
 const Item: FC<ItemProps> = ({
   text = "",
-  checked = false,
-  onChangeStatus,
-  onChangeLevel,
+  isChecked = false,
+  isImportant = false,
+  onChangeStatusCompleted,
+  onChangeLevelImportant,
   id
 }) => {
   const onChangeStatusTask = () => {
-    onChangeStatus(id);
+    onChangeStatusCompleted(id);
   };
 
   const onChangeLevelTask = () => {
-    onChangeLevel(id);
+    onChangeLevelImportant(id);
   };
 
   return (
-    <S.Wrapper checked={checked}>
+    <S.Wrapper checked={isChecked}>
       <S.TextWrapper>
         <S.Input
           type="checkbox"
           onChange={onChangeStatusTask}
-          checked={checked}
+          checked={isChecked}
         />
-        <S.Text checked={checked}>{text}</S.Text>
+        <S.Text checked={isChecked}>{text}</S.Text>
       </S.TextWrapper>
       <S.OptionsWrapper>
         <Button
           onClick={onChangeLevelTask}
           icon={
-            checked ? <FaStar color="FFE500" /> : <FaRegStar color="FAFAFA" />
+            isImportant ? (
+              <FaStar color="FFE500" />
+            ) : (
+              <FaRegStar color="FAFAFA" />
+            )
           }
         ></Button>
         {/* <Button onClick={} icon={<IoMdMore />}></Button> */}

@@ -1,38 +1,65 @@
+import { shallowEqual, useSelector } from "react-redux";
+
 import Item from "../../components/Item";
 import TextField from "../../components/TextField";
+
+import {
+  getTasksImportants,
+  getTasksRest
+} from "../../modules/tasks/redux/taskSelector";
+import {
+  updateStatusCompletedTask,
+  updateStatusImportantTask
+} from "../../modules/tasks/redux/slice";
+import { useAppDispatch } from "../../core/hooks/useRedux";
 
 import * as S from "./styles";
 
 const Home = () => {
+  const tasksImportants = useSelector(getTasksImportants, shallowEqual);
+  const tasksRest = useSelector(getTasksRest, shallowEqual);
+  const dispatch = useAppDispatch();
+
+  const onChangeLevelImportant = (id: string) => {
+    dispatch(updateStatusImportantTask({ id }));
+  };
+
+  const onChangeStatusCompleted = (id: string) => {
+    dispatch(updateStatusCompletedTask({ id }));
+  };
+
   return (
     <S.Wrapper>
       <S.Content>
-        <S.WrapperTasks>
-          <S.Title>Importante</S.Title>
-          <Item
-            checked={true}
-            text="dadas"
-            onChangeLevel={() => {}}
-            onChangeStatus={() => {}}
-            id="123"
-          />
-          <Item
-            checked={true}
-            text="dadas"
-            onChangeLevel={() => {}}
-            onChangeStatus={() => {}}
-            id="123"
-          />
-        </S.WrapperTasks>
+        {tasksImportants.length > 0 && (
+          <S.WrapperTasks>
+            <S.Title>Favoritas</S.Title>
+            {tasksImportants.map((task) => (
+              <Item
+                key={task.id}
+                isChecked={task.isCompleted}
+                isImportant={task.isImportant}
+                text={task.text}
+                onChangeLevelImportant={onChangeLevelImportant}
+                onChangeStatusCompleted={onChangeStatusCompleted}
+                id={task.id}
+              />
+            ))}
+          </S.WrapperTasks>
+        )}
         <S.WrapperTasks>
           <S.Title>Tarefas</S.Title>
-          <Item
-            checked={false}
-            text="dadas"
-            onChangeLevel={() => {}}
-            onChangeStatus={() => {}}
-            id="123"
-          />
+          {tasksRest.map((task) => (
+            <Item
+              key={task.id}
+              isChecked={task.isCompleted}
+              isImportant={task.isImportant}
+              text={task.text}
+              onChangeLevelImportant={onChangeLevelImportant}
+              onChangeStatusCompleted={onChangeStatusCompleted}
+              id={task.id}
+            />
+          ))}
         </S.WrapperTasks>
       </S.Content>
       <S.Footer>
