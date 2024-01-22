@@ -4,11 +4,15 @@ import { Provider } from "react-redux";
 import { store } from "../redux/store";
 import ViewThemeProvider from "./styles/ViewThemeProvider";
 
+import Home from "../app/pages/Home";
+
 const App = () => {
   return (
     <Provider store={store}>
       <ViewThemeProvider>
-        <Suspense fallback={<div>...loading</div>}>Hello world</Suspense>
+        <Suspense fallback={<div>...loading</div>}>
+          <Home />
+        </Suspense>
       </ViewThemeProvider>
     </Provider>
   );
