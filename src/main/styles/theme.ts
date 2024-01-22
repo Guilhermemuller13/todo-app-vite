@@ -1,10 +1,10 @@
 export default {
   grid: {
-    container: '130rem',
-    gutter: '3.2rem'
+    container: "130rem",
+    gutter: "3.2rem"
   },
   border: {
-    radius: '0.4rem'
+    radius: "0.4rem"
   },
   font: {
     family:
@@ -13,36 +13,36 @@ export default {
     normal: 400,
     bold: 600,
     sizes: {
-      xxsmall: '0.8rem',
-      xsmall: '1.2rem',
-      small: '1.4rem',
-      medium: '1.6rem',
-      large: '1.8rem',
-      xlarge: '2.0rem',
-      xxlarge: '2.8rem',
-      huge: '5.2rem'
+      xxsmall: "0.8rem",
+      xsmall: "1.2rem",
+      small: "1.4rem",
+      medium: "1.6rem",
+      large: "1.8rem",
+      xlarge: "2.0rem",
+      xxlarge: "2.8rem",
+      huge: "5.2rem"
     }
   },
   colors: {
-    primary: '#20324b',
-    secondary: '#3CD3C1',
-    mainBg: '#06092B',
-    lightBg: '#F2F2F2',
-    white: '#FAFAFA',
-    black: '#030517',
-    lightGray: '#EAEAEA',
-    gray: '#8F8F8F',
-    darkGray: '#2E2F42',
-    red: '#FF6347'
+    primary: "#20324b",
+    secondary: "#BD83B8",
+    mainBg: "#06092B",
+    lightBg: "#F2F2F2",
+    white: "#FAFAFA",
+    black: "#030517",
+    lightGray: "#EAEAEA",
+    gray: "#8F8F8F",
+    darkGray: "#2E2F42",
+    red: "#FF6347"
   },
   spacings: {
-    xxsmall: '0.8rem',
-    xsmall: '1.6rem',
-    small: '2.4rem',
-    medium: '3.2rem',
-    large: '4.0rem',
-    xlarge: '4.8rem',
-    xxlarge: '5.6rem'
+    xxsmall: "0.8rem",
+    xsmall: "1.6rem",
+    small: "2.4rem",
+    medium: "3.2rem",
+    large: "4.0rem",
+    xlarge: "4.8rem",
+    xxlarge: "5.6rem"
   },
   layers: {
     base: 10,
@@ -52,7 +52,7 @@ export default {
     alwaysOnTop: 50
   },
   transition: {
-    default: '0.3s ease-in-out',
-    fast: '0.1s ease-in-out'
+    default: "0.3s ease-in-out",
+    fast: "0.1s ease-in-out"
   }
 } as const;
