@@ -29,16 +29,7 @@ export const Input = styled.input`
     background: transparent;
     border: 0;
     outline: none;
-
-    &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 ${theme.spacings.small}
-        ${theme.colors.lightGray} inset;
-      filter: none;
-      &::first-line {
-        font-family: ${theme.font.family};
-        font-size: ${theme.font.sizes.medium};
-      }
-    }
+    width: 100%;
   `}
 `;
 
