@@ -7,6 +7,7 @@ type TaskFormProps = {
   onSubmitFormTask: (task: string) => void;
 };
 
+//criado form para controlar o input de nova task
 const TaskForm: FC<TaskFormProps> = ({ onSubmitFormTask }) => {
   return (
     <Formik
@@ -23,13 +24,13 @@ const TaskForm: FC<TaskFormProps> = ({ onSubmitFormTask }) => {
         resetForm();
       }}
     >
-      {({ values, errors, touched, handleSubmit, setFieldValue }) => (
+      {({ values, errors, handleSubmit, setFieldValue }) => (
         <form onSubmit={handleSubmit}>
           <TextField
             value={values.text}
             onInputChange={(value) => setFieldValue("text", value)}
+            error={errors.text}
           />
-          {errors.text && touched.text && errors.text}
         </form>
       )}
     </Formik>
