@@ -3,7 +3,7 @@ import { rgba } from "polished";
 
 import { ItemProps } from ".";
 
-type CheckedProps = Pick<ItemProps, "checked">;
+type CheckedProps = Pick<ItemProps, "isChecked">;
 
 export const TextWrapper = styled.div`
   ${({ theme }) => css`
@@ -37,19 +37,19 @@ export const Input = styled.input`
 `;
 
 export const Text = styled.p<CheckedProps>`
-  ${({ theme, checked }) => css`
+  ${({ theme, isChecked }) => css`
     color: ${theme.colors.white};
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.bold};
-    text-decoration: ${checked ? "line-through" : "none"};
+    text-decoration: ${isChecked ? "line-through" : "none"};
   `}
 `;
 
 export const Wrapper = styled.div<CheckedProps>`
-  ${({ theme, checked }) => css`
+  ${({ theme, isChecked }) => css`
     display: flex;
     justify-content: space-between;
-    background: ${checked
+    background: ${isChecked
       ? rgba(theme.colors.secondary, 0.6)
       : theme.colors.secondary};
     padding: ${theme.spacings.xxsmall};

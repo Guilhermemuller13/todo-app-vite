@@ -5,7 +5,7 @@ const getStorageItem = (key: string) => {
   return JSON.parse(data!);
 };
 
-const setStorageItem = (key: string, value: string[]) => {
+const setStorageItem = (key: string, value: object) => {
   const data = JSON.stringify(value);
   return window.localStorage.setItem(`${APP_KEY}_${key}`, data);
 };
