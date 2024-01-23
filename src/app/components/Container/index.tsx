@@ -1,10 +1,8 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  ${({ theme }) => css`
-    width: 100vw;
-    height: 100dvh;
-    display: flex;
-    justify-content: center;
-  `}
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
 `;
