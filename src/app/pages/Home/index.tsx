@@ -1,13 +1,15 @@
 import { shallowEqual, useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
 import Item from "../../components/Item";
-import TextField from "../../components/TextField";
+import TaskForm from "../../components/TaskForm";
 
 import {
   getTasksImportants,
   getTasksRest
 } from "../../modules/tasks/redux/taskSelector";
 import {
+  setNewTask,
   updateStatusCompletedTask,
   updateStatusImportantTask
 } from "../../modules/tasks/redux/slice";
@@ -27,6 +29,17 @@ const Home = () => {
 
   const onChangeStatusCompleted = (id: string) => {
     dispatch(updateStatusCompletedTask({ id }));
+  };
+
+  const onSubmitFormTask = (text: string) => {
+    dispatch(
+      setNewTask({
+        text: text,
+        id: uuidv4(),
+        isCompleted: false,
+        isImportant: false
+      })
+    );
   };
 
   return (
@@ -65,7 +78,7 @@ const Home = () => {
           </S.WrapperTasks>
         </S.Content>
         <S.Footer>
-          <TextField />
+          <TaskForm onSubmitFormTask={onSubmitFormTask} />
         </S.Footer>
       </S.Wrapper>
     </Container>
