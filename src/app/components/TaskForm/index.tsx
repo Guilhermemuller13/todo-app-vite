@@ -7,13 +7,17 @@ type TaskFormProps = {
   onSubmitFormTask: (task: string) => void;
 };
 
+type ErrorsSchema = {
+  text?: string;
+};
+
 //criado form para controlar o input de nova task
 const TaskForm: FC<TaskFormProps> = ({ onSubmitFormTask }) => {
   return (
     <Formik
       initialValues={{ text: "" }}
       validate={(values) => {
-        const errors = {};
+        const errors: ErrorsSchema = {};
         if (values.text.trim().length === 0) {
           errors.text = "Não deixe o campo em branco";
         }
