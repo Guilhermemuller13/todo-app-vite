@@ -4,14 +4,12 @@ import * as S from "./styles";
 
 export type TextFieldProps = {
   onInputChange?: (value: string) => void;
-  label?: string;
   initialValue?: string;
   disabled?: boolean;
   error?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const TextField = ({
-  label,
   name,
   initialValue = "",
   error,
@@ -30,7 +28,6 @@ const TextField = ({
 
   return (
     <S.Wrapper disabled={disabled} error={!!error}>
-      {!!label && <S.Label htmlFor={name}>{label}</S.Label>}
       <S.InputWrapper>
         <S.Input
           type="text"
@@ -38,7 +35,6 @@ const TextField = ({
           value={value}
           disabled={disabled}
           name={name}
-          {...(label ? { id: name } : {})}
           {...props}
         />
       </S.InputWrapper>

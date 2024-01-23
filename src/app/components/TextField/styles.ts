@@ -33,14 +33,6 @@ export const Input = styled.input`
   `}
 `;
 
-export const Label = styled.label`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.black};
-    cursor: pointer;
-  `}
-`;
-
 export const Error = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.red};
@@ -53,13 +45,8 @@ const wrapperModifiers = {
     ${InputWrapper} {
       border-color: ${theme.colors.red};
     }
-
-    ${Label} {
-      color: ${theme.colors.red};
-    }
   `,
   disabled: (theme: DefaultTheme) => css`
-    ${Label},
     ${Input} {
       cursor: not-allowed;
       color: ${theme.colors.gray};
