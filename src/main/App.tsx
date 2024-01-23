@@ -6,6 +6,7 @@ import ViewThemeProvider from "./styles/ViewThemeProvider";
 
 import Home from "../app/pages/Home";
 
+// app como incialização da store e estilo da aplicação
 const App = () => {
   return (
     <Provider store={store}>
