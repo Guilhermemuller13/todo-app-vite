@@ -14,6 +14,7 @@ import {
 import { useAppDispatch } from "../../core/hooks/useRedux";
 
 import * as S from "./styles";
+import { Container } from "../../components/Container";
 
 const Home = () => {
   const tasksImportants = useSelector(getTasksImportants, shallowEqual);
@@ -29,12 +30,28 @@ const Home = () => {
   };
 
   return (
-    <S.Wrapper>
-      <S.Content>
-        {tasksImportants.length > 0 && (
+    <Container>
+      <S.Wrapper>
+        <S.Content>
+          {tasksImportants.length > 0 && (
+            <S.WrapperTasks>
+              <S.Title>Favoritas</S.Title>
+              {tasksImportants.map((task) => (
+                <Item
+                  key={task.id}
+                  isChecked={task.isCompleted}
+                  isImportant={task.isImportant}
+                  text={task.text}
+                  onChangeLevelImportant={onChangeLevelImportant}
+                  onChangeStatusCompleted={onChangeStatusCompleted}
+                  id={task.id}
+                />
+              ))}
+            </S.WrapperTasks>
+          )}
           <S.WrapperTasks>
-            <S.Title>Favoritas</S.Title>
-            {tasksImportants.map((task) => (
+            <S.Title>Tarefas</S.Title>
+            {tasksRest.map((task) => (
               <Item
                 key={task.id}
                 isChecked={task.isCompleted}
@@ -46,26 +63,12 @@ const Home = () => {
               />
             ))}
           </S.WrapperTasks>
-        )}
-        <S.WrapperTasks>
-          <S.Title>Tarefas</S.Title>
-          {tasksRest.map((task) => (
-            <Item
-              key={task.id}
-              isChecked={task.isCompleted}
-              isImportant={task.isImportant}
-              text={task.text}
-              onChangeLevelImportant={onChangeLevelImportant}
-              onChangeStatusCompleted={onChangeStatusCompleted}
-              id={task.id}
-            />
-          ))}
-        </S.WrapperTasks>
-      </S.Content>
-      <S.Footer>
-        <TextField />
-      </S.Footer>
-    </S.Wrapper>
+        </S.Content>
+        <S.Footer>
+          <TextField />
+        </S.Footer>
+      </S.Wrapper>
+    </Container>
   );
 };
 

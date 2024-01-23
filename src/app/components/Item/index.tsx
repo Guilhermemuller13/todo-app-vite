@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
-// import { IoMdMore } from "react-icons/io";
 
 import Button from "../Button";
 
@@ -32,14 +31,14 @@ const Item: FC<ItemProps> = ({
   };
 
   return (
-    <S.Wrapper checked={isChecked}>
+    <S.Wrapper isChecked={isChecked}>
       <S.TextWrapper>
         <S.Input
           type="checkbox"
           onChange={onChangeStatusTask}
           checked={isChecked}
         />
-        <S.Text checked={isChecked}>{text}</S.Text>
+        <S.Text isChecked={isChecked}>{text}</S.Text>
       </S.TextWrapper>
       <S.OptionsWrapper>
         <Button
@@ -52,7 +51,6 @@ const Item: FC<ItemProps> = ({
             )
           }
         ></Button>
-        {/* <Button onClick={} icon={<IoMdMore />}></Button> */}
       </S.OptionsWrapper>
     </S.Wrapper>
   );

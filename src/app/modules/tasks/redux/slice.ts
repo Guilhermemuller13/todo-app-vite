@@ -1,4 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  getStorageItem,
+  setStorageItem
+} from "../../../core/utils/localStorage";
 
 type Task = {
   text: string;
@@ -14,26 +18,7 @@ type TaskStateProps = {
 type PayloadSetTask = Task;
 
 const initialState: TaskStateProps = {
-  tasks: [
-    {
-      id: "1",
-      isCompleted: false,
-      isImportant: false,
-      text: "title da task"
-    },
-    {
-      id: "2",
-      isCompleted: false,
-      isImportant: true,
-      text: "title da task"
-    },
-    {
-      id: "3",
-      isCompleted: true,
-      isImportant: true,
-      text: "title da task"
-    }
-  ]
+  tasks: getStorageItem("task") || []
 };
 
 export const taskSlice = createSlice({
@@ -42,6 +27,10 @@ export const taskSlice = createSlice({
   reducers: {
     setNewTask(state, { payload }: PayloadAction<PayloadSetTask>) {
       state.tasks.push(payload);
+      const taskLS = getStorageItem("task") || [];
+      taskLS.push(payload);
+
+      setStorageItem("task", taskLS);
     },
     updateStatusCompletedTask(
       state,
@@ -54,6 +43,7 @@ export const taskSlice = createSlice({
       if (findTaskById !== -1) {
         const currentStatus = state.tasks[findTaskById].isCompleted;
         state.tasks[findTaskById].isCompleted = !currentStatus;
+        setStorageItem("task", state.tasks);
       }
     },
     updateStatusImportantTask(
@@ -67,6 +57,7 @@ export const taskSlice = createSlice({
       if (findTaskById !== -1) {
         const currentStatus = state.tasks[findTaskById].isImportant;
         state.tasks[findTaskById].isImportant = !currentStatus;
+        setStorageItem("task", state.tasks);
       }
     }
   }

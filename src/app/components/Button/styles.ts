@@ -1,20 +1,8 @@
-import styled, { css, DefaultTheme } from "styled-components";
+import styled, { css } from "styled-components";
 
-export type WrapperProps = {
-  hasIcon: boolean;
-};
+export type WrapperProps = {};
 
 const wrapperModifiers = {
-  withIcon: (theme: DefaultTheme) => css`
-    svg {
-      width: 2rem;
-      height: 2rem;
-
-      & + span {
-        margin-left: ${theme.spacings.xxsmall};
-      }
-    }
-  `,
   disabled: () => css`
     &:disabled {
       cursor: not-allowed;
@@ -23,8 +11,8 @@ const wrapperModifiers = {
   `
 };
 
-export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme, hasIcon, disabled }) => css`
+export const Wrapper = styled.button`
+  ${({ theme, disabled }) => css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +30,6 @@ export const Wrapper = styled.button<WrapperProps>`
       box-shadow: 0 0 0 3px ${theme.colors.secondary};
     }
 
-    ${!!hasIcon && wrapperModifiers.withIcon(theme)};
     ${disabled && wrapperModifiers.disabled()};
   `}
 `;
