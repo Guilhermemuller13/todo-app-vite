@@ -13,12 +13,18 @@ type Task = {
 
 type TaskStateProps = {
   tasks: Task[];
+  allTaskCompleted: boolean;
 };
 
 type PayloadSetTask = Task;
 
 const initialState: TaskStateProps = {
-  tasks: getStorageItem("task") || []
+  tasks: getStorageItem("task") || [],
+  allTaskCompleted: false
+};
+
+const validateAllTasksIsCompleted = (tasks: Task[]): boolean => {
+  return tasks.every((task) => task.isCompleted);
 };
 
 export const taskSlice = createSlice({
@@ -44,6 +50,7 @@ export const taskSlice = createSlice({
         const currentStatus = state.tasks[findTaskById].isCompleted;
         state.tasks[findTaskById].isCompleted = !currentStatus;
         setStorageItem("task", state.tasks);
+        state.allTaskCompleted = validateAllTasksIsCompleted(state.tasks);
       }
     },
     updateStatusImportantTask(
