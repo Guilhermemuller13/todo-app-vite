@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import media from "styled-media-query";
 
 export const Content = styled.div`
   ${() => css`
@@ -11,6 +12,10 @@ export const Content = styled.div`
     &::-webkit-scrollbar {
       width: 0;
     }
+
+    ${media.lessThan("medium")`
+    max-height: 90vh;
+    `}
   `}
 `;
 

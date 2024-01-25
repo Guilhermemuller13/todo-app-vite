@@ -34,6 +34,7 @@ const TaskForm: FC<TaskFormProps> = ({ onSubmitFormTask }) => {
             value={values.text}
             onInputChange={(value) => setFieldValue("text", value)}
             error={errors.text}
+            placeholder="Adicione uma tarefa"
           />
         </form>
       )}
